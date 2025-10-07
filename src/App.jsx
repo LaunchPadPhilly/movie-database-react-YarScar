@@ -5,6 +5,7 @@ import SearchPage from './pages/SearchPage';
 import MovieDetailPage from './pages/MovieDetailPage';
 import FavoritesPage from './pages/FavoritesPage';
 import './index.css';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,6 +18,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
+    <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <Router>
         <AppShell>
@@ -28,6 +30,9 @@ function App() {
         </AppShell>
       </Router>
     </QueryClientProvider>
+
+    /*error boundary added to catch errors in the app after the return and before the ending*/
+    </ErrorBoundary>
   );
 }
 
